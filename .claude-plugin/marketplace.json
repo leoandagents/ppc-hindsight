@@ -1,0 +1,12 @@
+{
+  "name": "ppc-hindsight-marketplace",
+  "owner": { "name": "leoandagents" },
+  "description": "Marketplace for the ppc-hindsight plugin (Amazon Sponsored Products hindsight audit).",
+  "plugins": [
+    {
+      "name": "ppc-hindsight",
+      "source": "./",
+      "description": "Audit wasted Amazon PPC spend from one Targeting report export."
+    }
+  ]
+}

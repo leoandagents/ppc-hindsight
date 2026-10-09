@@ -1,0 +1,10 @@
+{
+  "name": "ppc-hindsight",
+  "version": "0.1.0",
+  "description": "Hindsight audit for Amazon Sponsored Products: how much money kept flowing after a keyword had already proven it should be cut, and which targets are bleeding right now. One console CSV export, no API keys, nothing leaves the machine.",
+  "author": { "name": "leoandagents" },
+  "homepage": "https://github.com/leoandagents/ppc-hindsight",
+  "repository": "https://github.com/leoandagents/ppc-hindsight",
+  "license": "MIT",
+  "keywords": ["amazon-ads", "ppc", "sponsored-products", "audit", "wasted-spend", "ecommerce"]
+}

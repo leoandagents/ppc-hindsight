@@ -35,15 +35,26 @@ If yours are not, add an alias in `ppc_hindsight/normalize.py` (one line) and op
 
 ## 2. Run
 
+Zero install (Python 3.10+, standard library only):
+
 ```bash
-pip install -e .
-ppc-hindsight targeting.csv                      # Markdown report to stdout
-ppc-hindsight targeting.csv --out audit.md --json audit.json
-ppc-hindsight targeting.csv --target-acos 0.30 --max-acos 0.50
-ppc-hindsight targeting.csv --from 2026-07-01   # score a sub-window; earlier rows still warm up the trailing windows
+python audit.py targeting.csv                    # Markdown report to stdout
+python audit.py targeting.csv --out audit.md --json audit.json
+python audit.py targeting.csv --target-acos 0.30 --max-acos 0.50
+python audit.py targeting.csv --from 2026-07-01  # score a sub-window; earlier rows still warm up the trailing windows
 ```
 
-Or as a Claude Code skill: install the plugin and say *"audit my PPC with targeting.csv"*.
+Or `pip install -e .` and use the `ppc-hindsight` command with the same flags.
+
+### As a Claude Code plugin
+
+```
+/plugin install ppc-hindsight --marketplace leoandagents/ppc-hindsight
+```
+
+(On Claude Code before 2.1.275: `/plugin marketplace add leoandagents/ppc-hindsight`, then
+`/plugin install ppc-hindsight@ppc-hindsight-marketplace`.) Then say *"audit my PPC with targeting.csv"*.
+The skill runs the audit locally and reads the result back to you; it never touches your ad account.
 
 ## 3. What the numbers mean
 
