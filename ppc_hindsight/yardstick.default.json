@@ -1,0 +1,28 @@
+{
+  "_comment": "Engine-agnostic yardstick. Both the old and any new engine are scored with these exact numbers. Change only with a reason written in guardrails_history.jsonl. min_episode_spend_usd: an evidence episode counts toward detection-latency/unacted statistics only if the keyword actually spent that much during it (dead keywords are not a failure to act).",
+  "target_acos": 0.35,
+  "max_acos": 0.55,
+  "cut_evidence": {
+    "_comment": "A keyword-day is 'evidence-sufficient for a cut' when, over the trailing window ending yesterday (settled data), EITHER zero orders with enough clicks and spend, OR ACOS above max_acos with enough spend.",
+    "window_days": 14,
+    "zero_orders": {
+      "min_clicks": 15,
+      "min_spend": 10.0
+    },
+    "over_acos": {
+      "min_spend": 15.0,
+      "acos_over": 0.55
+    }
+  },
+  "grace_days": 2,
+  "false_kill": {
+    "forward_days": 14,
+    "forward_min_orders": 1,
+    "lifecycle_days": 90,
+    "lifecycle_min_orders": 3
+  },
+  "churn_days": 7,
+  "settled_window_days": 14,
+  "min_episode_days_for_unacted": 7,
+  "min_episode_spend_usd": 5.0
+}

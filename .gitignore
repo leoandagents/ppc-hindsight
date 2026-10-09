@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+dist/
+build/
+*.egg-info/
+# never commit real account exports or outputs
+samples/private/
+out/
+*.csv
+!samples/*.csv
