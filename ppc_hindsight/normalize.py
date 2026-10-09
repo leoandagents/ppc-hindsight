@@ -26,7 +26,7 @@ ALIASES: dict[str, tuple[str, ...]] = {
     "targeting": ("targeting", "投放方案", "keyword", "keyword text", "targeting expression"),
     "match_type": ("match type", "targeting match type", "投放匹配类型", "投放匹配类型-targeting match type", "匹配类型"),
     "bid": ("target bid", "目标竞价", "bid", "keyword bid", "竞价"),
-    "status": ("targeting status", "投放状态", "status", "keyword status"),
+    "status": ("target status", "targeting status", "投放状态", "status", "keyword status"),
     "impressions": ("impressions", "展示量", "impr"),
     "clicks": ("clicks", "点击量"),
     "spend": ("spend", "总成本", "cost", "total cost", "花费"),

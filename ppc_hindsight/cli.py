@@ -40,6 +40,14 @@ def main(argv: list[str] | None = None) -> int:
               f"{info['date_from']} → {info['date_to']}, spend ${info['spend']:,.2f}"
               f"{'' if info['has_bid'] else ' (no bid column)'}{'' if info['has_status'] else ' (no status column)'}", file=sys.stderr)
     y = load_yardstick(a.yardstick, target_acos=a.target_acos, max_acos=a.max_acos, grace_days=a.grace_days, window_days=a.window_days)
+    if info["date_from"] and info["date_to"]:
+        import datetime as _dt
+        span = (_dt.date.fromisoformat(info["date_to"]) - _dt.date.fromisoformat(info["date_from"])).days + 1
+        need = int(y["cut_evidence"]["window_days"]) + int(y["grace_days"]) + a.unsettled_days + 7
+        if span < need:
+            print(f"[warn] export covers {span} days; the audit needs at least {need} to say anything useful "
+                  f"({y['cut_evidence']['window_days']}-day evidence window + grace + unsettled days + a week to watch). "
+                  "Re-export with 'Last 90 days'.", file=sys.stderr)
     res = audit(rows, y, unsettled_days=a.unsettled_days, score_from=a.score_from, score_to=a.score_to)
     md = render(res, top=a.top)
     if a.out:

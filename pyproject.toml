@@ -1,6 +1,6 @@
 [project]
 name = "ppc-hindsight"
-version = "0.1.0"
+version = "0.1.1"
 description = "Hindsight audit for Amazon Sponsored Products: what late, missing and wrong keyword decisions actually cost, computed from one console export."
 readme = "README.md"
 requires-python = ">=3.10"
