@@ -75,7 +75,8 @@ def render(res: dict, top: int = 15) -> str:
     out.append(f"- The first {Y['grace_days']} days of every episode are forgiven. Only spend after that is counted.")
     out.append(f"- Episodes under {_usd(Y['min_episode_spend_usd'])} total spend are ignored (dead keywords are not a failure to act).")
     out.append("- `stopped` = spend in the 7 days after the episode fell below 20% of the in-episode daily rate. "
-               "`recovered` = orders came back. `ongoing` = still qualifying on the last settled day.")
+               "`recovered` = orders came back. `faded` = still spending, just slipped under the evidence thresholds "
+               "(usually a bid cut that slowed the bleed without stopping it). `ongoing` = still qualifying on the last settled day.")
     out.append("- This audit only sees what the export sees: no bid history, no attribution beyond what the report column carries. "
                "It prices decisions, it does not make them.")
     out.append("")

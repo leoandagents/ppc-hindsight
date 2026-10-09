@@ -57,6 +57,17 @@ def _num(v) -> float:
     return float(m.group()) if m else 0.0
 
 
+_EXCEL_WRAP = re.compile(r'^="?(.*?)"?$')
+
+
+def _txt(v) -> str:
+    """Strip Excel's ="..." wrapper the console puts around long numeric IDs."""
+    s = str(v or "").strip()
+    if s.startswith("="):
+        s = _EXCEL_WRAP.sub(r"\1", s)
+    return s.strip()
+
+
 def _date(v) -> str | None:
     s = str(v).strip()
     if not s:
@@ -106,7 +117,7 @@ def read_targeting_csv(path: str | Path) -> list[dict]:
     for rec in reader:
         if not rec or all(not c.strip() for c in rec):
             continue
-        g = lambda k: rec[idx[k]] if k in idx and idx[k] < len(rec) else ""  # noqa: E731
+        g = lambda k: _txt(rec[idx[k]]) if k in idx and idx[k] < len(rec) else ""  # noqa: E731
         day = _date(g("date"))
         if not day:
             continue

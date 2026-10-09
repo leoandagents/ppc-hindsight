@@ -160,9 +160,15 @@ def audit(rows: list[dict], yardstick: dict, unsettled_days: int = 2,
                 reason = "ongoing"
             else:
                 after = S.window(k, j + 1, min(settled_end, j + 7))
-                daily_in = w_ep[SPEND] / max(1, j - i + 1)
+                daily_in = S.window(k, i, j)[SPEND] / max(1, j - i + 1)
                 after_daily = after[SPEND] / max(1, min(settled_end, j + 7) - j)
-                reason = "stopped" if after_daily < 0.2 * daily_in else "recovered"
+                nxt = S.window(k, j + 2 - W, j + 1)  # the first window that no longer qualified
+                if after_daily < 0.2 * daily_in:
+                    reason = "stopped"      # spend dried up: a cut, a pause, or no more impressions
+                elif nxt[ORDERS] > 0:
+                    reason = "recovered"    # orders came back
+                else:
+                    reason = "faded"        # still spending, just slipped under the evidence thresholds
             ep = {
                 "target_id": k, "start": i, "end": j, "days": j - i + 1,
                 "start_date": (day0 + dt.timedelta(days=i)).isoformat(),
