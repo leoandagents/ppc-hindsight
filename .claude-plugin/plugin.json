@@ -6,6 +6,9 @@
   "author": { "name": "leoandagents" },
   "homepage": "https://github.com/leoandagents/ppc-hindsight",
   "repository": "https://github.com/leoandagents/ppc-hindsight",
+  "documentationUrl": "https://github.com/leoandagents/ppc-hindsight#readme",
+  "supportUrl": "https://github.com/leoandagents/ppc-hindsight/issues",
+  "privacyPolicyUrl": "https://github.com/leoandagents/ppc-hindsight/blob/master/PRIVACY.md",
   "license": "MIT",
   "keywords": ["amazon-ads", "ppc", "sponsored-products", "audit", "wasted-spend", "ecommerce"]
 }
